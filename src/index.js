@@ -4,10 +4,10 @@ const Route = express.Router()
 
 // defines all routes
 const products = require('./routes/products')
-// const categories = require('./routes/categories')
+const categories = require('./routes/categories')
 
 Route
     .use('/api/v1', products)
-    // .use('/categories', categories)
+    .use('/api/v1', categories)
 
 module.exports = Route
