@@ -19,6 +19,7 @@ module.exports = {
             })
         })
     },
+
     getProductbyID: (req, res) =>{
         const id = req.params
 
@@ -38,6 +39,7 @@ module.exports = {
             })
         })
     },
+
     addProduct: (req, res) => {
         const { name, description, image, category, price } = req.body
         const date_added = require('moment')().format('YYYY-MM-DD')
@@ -45,21 +47,22 @@ module.exports = {
         const data = { name, description, image, category, price, date_added, date_updated }
 
         productModel.addProduct(data)
-            .then(result => {
-                res.json({
-                    status: 200,
-                    message: 'Data added successfully!',
-                    data
-                })
+        .then(result => {
+            res.json({
+                status: 200,
+                message: 'Data added successfully!',
+                data
             })
-            .catch(err => {
-                console.log(err)
-                res.status(500).json({
-                    status: 500,
-                    message: 'Failed to add data!'
-                })
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({
+                status: 500,
+                message: 'Failed to add data!'
             })
+        })
     },
+
     addQuantityProduct: (req, res) => {
         const id = req.params
         const qty = req.body.quantity
@@ -82,6 +85,7 @@ module.exports = {
             })
         })
     },
+
     removeQuantityProduct: (req, res) => {
         const id = req.params
         const qty = req.body.quantity
@@ -104,6 +108,7 @@ module.exports = {
             })
         })
     },
+
     editProduct: (req, res) => {
         const id = req.params
         const { name, description, image, category, price } = req.body
@@ -111,37 +116,58 @@ module.exports = {
         const data = { name, description, image, category, price, date_updated }
 
         productModel.editProduct(data, id)
-            .then(result => {
-                res.json({
-                    status: 200,
-                    message: 'Data edited successfully!',
-                    data
-                })
+        .then(result => {
+            res.json({
+                status: 200,
+                message: 'Data edited successfully!',
+                data
             })
-            .catch(err => {
-                console.log(err)
-                res.status(500).json({
-                    status: 500,
-                    message: 'Failed to edit data!'
-                })
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({
+                status: 500,
+                message: 'Failed to edit data!'
             })
+        })
     },
+
     deleteProduct: (req, res) => {
         const id = req.params
 
         productModel.deleteProduct(id)
-            .then(result => {
-                res.json({
-                    status: 200,
-                    message: 'Data deleted successfully!'
-                })
+        .then(result => {
+            res.json({
+                status: 200,
+                message: 'Data deleted successfully!'
             })
-            .catch(err => {
-                console.log(err)
-                res.status(500).json({
-                    status: 500,
-                    message: 'Failed to delete data!'
-                })
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({
+                status: 500,
+                message: 'Failed to delete data!'
             })
+        })
+    },
+    
+    searchProductbyName: (req, res) => {
+        const search = req.query.name
+
+        productModel.searchProductbyName(search)
+        .then(result => {
+            res.json({
+                status: 200,
+                message: 'Searched successfully!',
+                result
+            })
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({
+                status: 200,
+                message: 'Failed to search!'
+            })
+        })
     }
 }
