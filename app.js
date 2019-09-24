@@ -2,6 +2,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
+const multer = require('multer')
+const cors = require('cors')
 
 const port = 3333
 const app = express() // use the express
@@ -9,6 +11,15 @@ const app = express() // use the express
 // parsing input
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+
+// image upload
+
+
+// cors
+app.use(cors({
+    origin: 'localhost'
+}))
+
 
 // logging activities
 app.use(logger('dev'))
