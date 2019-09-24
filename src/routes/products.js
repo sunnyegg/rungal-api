@@ -1,6 +1,5 @@
 // import all the required modules
 const express = require('express')
-// const app = express()
 const Route = express.Router()
 
 // import controller
@@ -9,6 +8,7 @@ const productsController = require('../controllers/products')
 Route
     .get('/products', productsController.getProducts)
     .get('/products/:id', productsController.getProductbyID)
+    .get('/search/', productsController.searchProductbyName)
     .post('/products', productsController.addProduct)
     .patch('/products/order/:id', productsController.addQuantityProduct)
     .patch('/products/remove/:id', productsController.removeQuantityProduct)
