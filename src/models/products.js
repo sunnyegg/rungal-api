@@ -4,7 +4,7 @@ const conn = require('../configs/db')
 module.exports = {
     getProducts: () => {
         return new Promise((resolve, reject) => {
-            conn.query('SELECT * FROM product',
+            conn.query('SELECT a.name, a.description, a.image, b.name as category, a.price, a.quantity, a.date_added, a.date_updated FROM product a, category b WHERE a.category=b.id',
             (err, result) => {
                 if(!err) {
                     resolve(result)
@@ -14,9 +14,10 @@ module.exports = {
             })
         })
     },
+
     getProductbyID: (id) => {
         return new Promise((resolve, reject) => {
-            conn.query('SELECT * FROM product WHERE ?', id,
+            conn.query('SELECT a.name, a.description, a.image, b.name as category, a.price, a.quantity, a.date_added, a.date_updated FROM product a, category b WHERE a.category=b.id AND a.?', id,
             (err, result) => {
                 if(!err) {
                     resolve(result)
@@ -26,6 +27,7 @@ module.exports = {
             })
         })
     },
+
     addProduct: (data) => {
         return new Promise((resolve, reject) => {
             conn.query('INSERT INTO product SET ?', data,
@@ -38,6 +40,7 @@ module.exports = {
             })
         })
     },
+
     addQuantityProduct: (qty, id) => {
         return new Promise((resolve, reject) => {
             conn.query('UPDATE product SET quantity = quantity + ? WHERE ?', [qty, id],
@@ -50,6 +53,7 @@ module.exports = {
             })
         })
     },
+
     removeQuantityProduct: (qty, id) => {
         return new Promise((resolve, reject) => {
             conn.query('UPDATE product SET quantity = quantity - ? WHERE ?', [qty, id],
@@ -74,6 +78,7 @@ module.exports = {
             })
         })
     },
+
     deleteProduct: (id) => {
         return new Promise((resolve, reject) => {
             conn.query('DELETE FROM product WHERE ?', [id],
@@ -82,6 +87,19 @@ module.exports = {
                     resolve(result)
                 } else {
                     reject(new Error(err))
+                }
+            })
+        })
+    },
+
+    searchProductbyName: (search) => {
+        return new Promise((resolve, reject) => {
+            conn.query(`SELECT * FROM product WHERE name LIKE '%${search}%'`,
+            (err, result) => {
+                if (!err) {
+                    resolve(result)
+                } else {
+                    reject(console.log(err))
                 }
             })
         })
