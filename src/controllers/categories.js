@@ -20,10 +20,12 @@ module.exports = {
         })
     },
     addCategory: (req, res) => {
-        const { name } = req.body
-        const date_added = require('moment')().format('YYYY-MM-DD')
-        const date_updated = require('moment')().format('YYYY-MM-DD')
-        const data = { name, date_added, date_updated }
+        const name = req.body
+        const data = {
+            name,
+            date_added: new Date(),
+            date_updated: new Date()
+        }
 
         productModel.addCategory(data)
             .then(result => {
@@ -42,10 +44,12 @@ module.exports = {
             })
     },
     editCategory: (req, res) => {
-        const { id } = req.params
-        const { name } = req.body
-        const date_updated = require('moment')().format('YYYY-MM-DD')
-        const data = { name, date_updated }
+        const id = req.params
+        const name = req.body
+        const data = {
+            name,
+            date_updated: new Date()
+        }
         const dataID = id
 
         productModel.editCategory(data, dataID)
