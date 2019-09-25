@@ -103,5 +103,17 @@ module.exports = {
                 }
             })
         })
+    },
+    sortProduct: (parameter) => {
+        return new Promise((resolve, reject) => {
+        conn.query(`SELECT a.name, a.description, a.image, b.name AS category, a.price, a.quantity, a.date_added, a.date_updated FROM product a, category b WHERE a.category=b.id ORDER BY ${parameter}`,
+            (err, result) => {
+                if (!err) {
+                    resolve(result)
+                } else {
+                    reject(new Error(err))
+                }
+            })
+        })
     }
 }
