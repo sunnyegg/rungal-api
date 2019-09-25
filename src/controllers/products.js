@@ -42,9 +42,15 @@ module.exports = {
 
     addProduct: (req, res) => {
         const { name, description, image, category, price } = req.body
-        const date_added = require('moment')().format('YYYY-MM-DD')
-        const date_updated = require('moment')().format('YYYY-MM-DD')
-        const data = { name, description, image, category, price, date_added, date_updated }
+        const data = { 
+            name,
+            description,
+            image,
+            category,
+            price,
+            date_added: new Date(),
+            date_updated: new Date()
+        }
 
         productModel.addProduct(data)
         .then(result => {
@@ -66,7 +72,7 @@ module.exports = {
     addQuantityProduct: (req, res) => {
         const id = req.params
         const qty = req.body.quantity
-        const date_updated = require('moment')().format('YYYY-MM-DD')
+        const date_updated = new Date()
         const quantity = qty
 
         productModel.addQuantityProduct(quantity, id)
@@ -89,7 +95,7 @@ module.exports = {
     removeQuantityProduct: (req, res) => {
         const id = req.params
         const qty = req.body.quantity
-        const date_updated = require('moment')().format('YYYY-MM-DD')
+        const date_updated = new Date()
         const quantity = qty
 
         productModel.removeQuantityProduct(quantity, id)
@@ -112,8 +118,14 @@ module.exports = {
     editProduct: (req, res) => {
         const id = req.params
         const { name, description, image, category, price } = req.body
-        const date_updated = require('moment')().format('YYYY-MM-DD')
-        const data = { name, description, image, category, price, date_updated }
+        const data = {
+            name,
+            description,
+            image,
+            category,
+            price,
+            date_updated: new Date()
+        }
 
         productModel.editProduct(data, id)
         .then(result => {
@@ -165,8 +177,28 @@ module.exports = {
         .catch(err => {
             console.log(err)
             res.status(500).json({
+                status: 500,
+                message: 'Failed to search data!'
+            })
+        })
+    },
+    sortProduct: (req, res) => {
+        const parameter = req.query.sort
+
+        productModel.sortProduct(parameter)
+        .then(result => {
+            res.json({
                 status: 200,
-                message: 'Failed to search!'
+                message: 'Sort successfully!',
+                parameter,
+                result
+            })
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({
+                status: 500,
+                message: 'Failed to sort data!'
             })
         })
     }
