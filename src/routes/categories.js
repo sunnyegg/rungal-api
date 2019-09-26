@@ -1,6 +1,5 @@
 // import all the required modules
 const express = require('express')
-// const app = express()
 const Route = express.Router()
 
 // import controller
