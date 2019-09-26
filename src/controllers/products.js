@@ -3,11 +3,41 @@ const productModel = require('../models/products')
 
 module.exports = {
     getProducts: (req, res) => {
-        productModel.getProducts()
+        const search = req.query.name
+        const searchParam = (!req.query.name) ? '%%' : `%${search}%`  
+
+        const sort = req.query.sort
+        let sortParam
+
+        switch(sort) {
+            case 'name':
+                sortParam = 'name'
+                break
+            case 'category':
+                sortParam = 'category'
+                break
+            case 'date_added':
+                sortParam = 'date_added'
+                break
+            default:
+                sortParam = 'id'
+        }
+
+        // const lim = req.query.limit
+        // const limit = lim || "0,20"
+        const page = parseInt(req.query.page,10) || 1
+        const off = ((page - 1) * 5)
+        const lim = (!req.query.page) ? 20 : 5
+
+        const limit = { a: searchParam, b: sortParam, c: off, d: lim }
+
+        productModel.getProducts( limit )
         .then(result => {
             res.json({
                 status: 200,
                 message: 'Get data successfully!',
+                sort: sortParam,
+                search: searchParam.replace(/%/g,''),
                 data: result
             })
         })
@@ -15,7 +45,8 @@ module.exports = {
             console.log(err)
             res.status(500).json({
                 status: 500,
-                message: 'Failed to get data!'
+                message: 'Failed to get data!',
+                err
             })
         })
     },
@@ -70,10 +101,11 @@ module.exports = {
     },
 
     addQuantityProduct: (req, res) => {
-        const id = req.params
+        const id = req.params        
         const qty = req.body.quantity
-        const date_updated = new Date()
         const quantity = qty
+
+        const date_updated = new Date()
 
         productModel.addQuantityProduct(quantity, id)
         .then(result => {
@@ -92,17 +124,17 @@ module.exports = {
         })
     },
 
-    removeQuantityProduct: (req, res) => {
+    reduceQuantityProduct: (req, res) => {
         const id = req.params
         const qty = req.body.quantity
         const date_updated = new Date()
         const quantity = qty
 
-        productModel.removeQuantityProduct(quantity, id)
+        productModel.reduceQuantityProduct(quantity, id)
         .then(result => {
             res.json({
                 status: 200,
-                message: 'Quantity removed successfully!',
+                message: 'Quantity reduced successfully!',
                 quantity,
                 date_updated
             })
@@ -110,7 +142,7 @@ module.exports = {
         .catch(err =>{
             res.status(500).json({
                 status: 500,
-                message: 'Failed to remove quantity!'
+                message: 'Failed to reduce quantity!'
             })
         })
     },
@@ -159,46 +191,6 @@ module.exports = {
             res.status(500).json({
                 status: 500,
                 message: 'Failed to delete data!'
-            })
-        })
-    },
-    
-    searchProductbyName: (req, res) => {
-        const search = req.query.name
-
-        productModel.searchProductbyName(search)
-        .then(result => {
-            res.json({
-                status: 200,
-                message: 'Searched successfully!',
-                result
-            })
-        })
-        .catch(err => {
-            console.log(err)
-            res.status(500).json({
-                status: 500,
-                message: 'Failed to search data!'
-            })
-        })
-    },
-    sortProduct: (req, res) => {
-        const parameter = req.query.sort
-
-        productModel.sortProduct(parameter)
-        .then(result => {
-            res.json({
-                status: 200,
-                message: 'Sort successfully!',
-                parameter,
-                result
-            })
-        })
-        .catch(err => {
-            console.log(err)
-            res.status(500).json({
-                status: 500,
-                message: 'Failed to sort data!'
             })
         })
     }
