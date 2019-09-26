@@ -8,11 +8,9 @@ const productsController = require('../controllers/products')
 Route
     .get('/products', productsController.getProducts)
     .get('/products/:id', productsController.getProductbyID)
-    .get('/sort/products', productsController.sortProduct)
-    .get('/search/', productsController.searchProductbyName)
     .post('/products', productsController.addProduct)
     .patch('/products/order/:id', productsController.addQuantityProduct)
-    .patch('/products/remove/:id', productsController.removeQuantityProduct)
+    .patch('/products/reduce/:id', productsController.reduceQuantityProduct)
     .put('/products/:id', productsController.editProduct)
     .delete('/products/:id', productsController.deleteProduct)
 
