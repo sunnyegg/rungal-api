@@ -2,9 +2,9 @@
 const conn = require('../configs/db')
 
 module.exports = {
-    getProducts: () => {
+    getProducts: (lim) => {
         return new Promise((resolve, reject) => {
-            conn.query('SELECT a.name, a.description, a.image, b.name as category, a.price, a.quantity, a.date_added, a.date_updated FROM product a, category b WHERE a.category=b.id',
+            conn.query(`SELECT a.id, a.name, a.description, a.image, b.name as category, a.price, a.quantity, a.date_added, a.date_updated FROM product a, category b WHERE a.category=b.id AND a.name LIKE ? ORDER BY a.${lim.b} LIMIT ?,?`, [lim.a, lim.c, lim.d],
             (err, result) => {
                 if(!err) {
                     resolve(result)
@@ -17,7 +17,7 @@ module.exports = {
 
     getProductbyID: (id) => {
         return new Promise((resolve, reject) => {
-            conn.query('SELECT a.name, a.description, a.image, b.name as category, a.price, a.quantity, a.date_added, a.date_updated FROM product a, category b WHERE a.category=b.id AND a.?', id,
+            conn.query('SELECT a.id, a.name, a.description, a.image, b.name as category, a.price, a.quantity, a.date_added, a.date_updated FROM product a, category b WHERE a.category=b.id AND a.?', id,
             (err, result) => {
                 if(!err) {
                     resolve(result)
@@ -54,7 +54,7 @@ module.exports = {
         })
     },
 
-    removeQuantityProduct: (qty, id) => {
+    reduceQuantityProduct: (qty, id) => {
         return new Promise((resolve, reject) => {
             conn.query('UPDATE product SET quantity = quantity - ? WHERE ?', [qty, id],
             (err, result) => {
@@ -99,14 +99,14 @@ module.exports = {
                 if (!err) {
                     resolve(result)
                 } else {
-                    reject(console.log(err))
+                    reject(new Error(err))
                 }
             })
         })
     },
     sortProduct: (parameter) => {
         return new Promise((resolve, reject) => {
-        conn.query(`SELECT a.name, a.description, a.image, b.name AS category, a.price, a.quantity, a.date_added, a.date_updated FROM product a, category b WHERE a.category=b.id ORDER BY ${parameter}`,
+        conn.query(`SELECT a.id, a.name, a.description, a.image, b.name AS category, a.price, a.quantity, a.date_added, a.date_updated FROM product a, category b WHERE a.category=b.id ORDER BY ${parameter}`,
             (err, result) => {
                 if (!err) {
                     resolve(result)
