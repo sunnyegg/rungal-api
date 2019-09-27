@@ -1,23 +1,12 @@
 // import database
 const conn = require('../configs/db')
 
+//define all functions
 module.exports = {
+    // this function can display all products, search product by name, sort product (by name, category, date_added), and limit display according to page
     getProducts: (lim) => {
         return new Promise((resolve, reject) => {
             conn.query(`SELECT a.id, a.name, a.description, a.image, b.name as category, a.price, a.quantity, a.date_added, a.date_updated FROM product a, category b WHERE a.category=b.id AND a.name LIKE ? ORDER BY a.${lim.b} LIMIT ?,?`, [lim.a, lim.c, lim.d],
-            (err, result) => {
-                if(!err) {
-                    resolve(result)
-                } else {
-                    reject(new Error(err))
-                }
-            })
-        })
-    },
-
-    getProductbyID: (id) => {
-        return new Promise((resolve, reject) => {
-            conn.query('SELECT a.id, a.name, a.description, a.image, b.name as category, a.price, a.quantity, a.date_added, a.date_updated FROM product a, category b WHERE a.category=b.id AND a.?', id,
             (err, result) => {
                 if(!err) {
                     resolve(result)
