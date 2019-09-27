@@ -110,14 +110,13 @@ module.exports = {
     const id = req.params
     const qty = req.body.quantity
     const date_updated = new Date()
-    const quantity = qty
 
-    productModel.reduceQuantityProduct(quantity, id)
+    productModel.reduceQuantityProduct(qty, id)
       .then(result => {
         res.json({
           status: 200,
           message: 'Quantity reduced successfully!',
-          quantity,
+          qty,
           date_updated
         })
       })
