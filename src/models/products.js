@@ -45,10 +45,22 @@ module.exports = {
 
   reduceQuantityProduct: (qty, id) => {
     return new Promise((resolve, reject) => {
-      conn.query('UPDATE product SET quantity = quantity - ? WHERE ?', [qty, id],
+      conn.query('SELECT quantity FROM product WHERE ?', id,
         (err, result) => {
-          if (!err) {
-            resolve(result)
+          if (result.length > 0) {
+            const quantity = parseInt(result[0].quantity) - qty
+            if (quantity > 0) {
+              conn.query('UPDATE product SET quantity = ? WHERE ?', [quantity, id],
+                (err, update) => {
+                  if (!err) {
+                    resolve(result)
+                  } else {
+                    reject(err)
+                  }
+                })
+            } else {
+              reject('Quantity too much!')
+            }
           } else {
             reject(new Error(err))
           }
