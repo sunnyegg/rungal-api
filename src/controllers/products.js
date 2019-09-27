@@ -199,7 +199,7 @@ const uploadImage = (req, res) => {
         return res.send('Please upload image file! (jpg/png only').status(400)
       }
 
-      image.mv('../assets/img/' + imageName)
+      image.mv('./src/assets/img/' + imageName)
 
       const result = {
         status: true,
