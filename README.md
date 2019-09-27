@@ -14,6 +14,8 @@
     - [Environment](#environment)
     - [Start](#start)
 - [Dependencies](#dependencies)
+- [Features](#features)
+- [Routes](#routes)
 
 ---
 ## Introduction
@@ -24,14 +26,15 @@ Rungal can help you order what you want to eat and deliver right to your front d
 ---
 ## Prerequisite
 
-- [Node.js] (#https://nodejs.org/en/)
-- [Express] (#https://www.npmjs.com/package/express)
-- [MySQL] (#https://www.npmjs.com/package/mysql)
-- [JWT] (#https://www.npmjs.com/package/jsonwebtoken)
-- [Postman] (#https://www.getpostman.com/)
+- [Node.js](https://nodejs.org/en/)
+- [Express](https://www.npmjs.com/package/express)
+- [MySQL](https://www.npmjs.com/package/mysql)
+- [JWT](https://www.npmjs.com/package/jsonwebtoken)
+- [Postman](https://www.getpostman.com/)
 
 ---
 ## Installation
+
 ### Clone
 ```bash
 $ git clone https://github.com/sunnyegg/rungal-api.git
@@ -55,13 +58,47 @@ $ npm start
 ---
 ## Other Dependencies
 
-- [Body Parser](#https://www.npmjs.com/package/body-parser)
-- [Cors](#https://www.npmjs.com/package/cors)
-- [Dotenv] (#https://www.npmjs.com/package/dotenv)
-- [Express Fileupload] (#https://www.npmjs.com/package/express-fileupload)
-- [Fs] (#https://www.npmjs.com/package/fs)
-- [Morgan] (#https://www.npmjs.com/package/morgan)
-- [Nodemon] (#https://www.npmjs.com/package/nodemon)
-- [Path] (#https://www.npmjs.com/package/path)
+- [Body Parser](https://www.npmjs.com/package/body-parser)
+- [Cors](https://www.npmjs.com/package/cors)
+- [Dotenv](https://www.npmjs.com/package/dotenv)
+- [Express Fileupload](https://www.npmjs.com/package/express-fileupload)
+- [Fs](https://www.npmjs.com/package/fs)
+- [Morgan](https://www.npmjs.com/package/morgan)
+- [Nodemon](https://www.npmjs.com/package/nodemon)
+- [Path](https://www.npmjs.com/package/path)
 
 ---
+## Features
+
+- Get ALL products/categories
+- Add product/category
+- Edit product/category
+- Delete product/category
+- Increase quantity product
+- Reduce quantitu product
+- Register user
+- Login user with JWT
+
+---
+## API Routes
+
+### Product
+
+- **/products** GET method: Get all products
+- **/products** POST method: Add product (login required)
+- **/products/:id** PUT method: Edit product (login required)
+- **/products/:id** DELETE method: Delete product (login required)
+- **/products/order/:id** PATCH method: Increase quantity product (login required)
+- **/products/reduce/:id** PATCH method: Reduce quantity product (login required)
+
+### Categories
+
+- **/categories** GET method: Get all categories 
+- **/categories** POST method: Add category (login required)
+- **/categories/:id** PUT method: Edit category (login required)
+- **/categories/:id** DELETE method: Delete category (login required)
+
+### Users
+
+- **/register** PUT method: Register user
+- **/login** PUT method: Login user
