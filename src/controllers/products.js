@@ -51,32 +51,13 @@ module.exports = {
         })
     },
 
-    getProductbyID: (req, res) =>{
-        const id = req.params
-
-        productModel.getProductbyID(id)
-        .then(result => {
-            res.json({
-                status: 200,
-                message: 'Get data successfully!',
-                id: result
-            })
-        })
-        .catch(err =>{
-            console.log(err)
-            res.status(500).json({
-                status: 500,
-                message: 'Failed to get data!'
-            })
-        })
-    },
-
     addProduct: (req, res) => {
-        const { name, description, image, category, price } = req.body
+        const image = uploadImage(req, res)
+        const { name, description, category, price } = req.body
         const data = { 
             name,
             description,
-            image,
+            image: image.name,
             category,
             price,
             date_added: new Date(),
@@ -148,12 +129,13 @@ module.exports = {
     },
 
     editProduct: (req, res) => {
+        const image = uploadImage(req, res)
         const id = req.params
-        const { name, description, image, category, price } = req.body
+        const { name, description, category, price } = req.body
         const data = {
             name,
             description,
-            image,
+            image: image.name,
             category,
             price,
             date_updated: new Date()
@@ -192,6 +174,43 @@ module.exports = {
                 status: 500,
                 message: 'Failed to delete data!'
             })
+        })
+    }
+}
+
+const uploadImage = (req, res) => {
+    try {
+        if (!req.files) {
+            return{
+                status: false,
+                message: 'No file uploaded.'
+            }            
+        } else {
+            const allowedExt = ['jpg','png']
+            const path = require('path')
+
+            let image = req.files.image
+            const imageName = Date.now() + '-' + image.name
+
+            let type = path.extname(imageName).substr(1).toLowerCase()
+
+            if (allowedExt.indexOf(type) === -1) {
+                return res.send('Please upload image file! (jpg/png only').status(400)
+            }
+
+            image.mv('../assets/img/' + imageName)
+
+            const result = {
+                status: true,
+                message: 'File uploaded!',
+                name: imageName
+            }
+            return result
+        }
+    }
+    catch (err) {
+        res.status(500).json({
+            status: 500
         })
     }
 }
