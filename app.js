@@ -4,8 +4,8 @@ const bodyParser = require('body-parser')
 const logger = require('morgan')
 const cors = require('cors')
 const fileUpload = require('express-fileupload')
+require('dotenv/config')
 
-const port = 3333 // define port
 const app = express() // use the express
 
 // enable fileupload
@@ -21,10 +21,12 @@ app.use(cors())
 // logging activities
 app.use(logger('dev'))
 
+// port
+port = process.env.SERVER_PORT || 3000
 
 // app listening to
 app.listen(port, function(){
-    console.log('Server listening on: ' + port)
+    console.log(`Server listening on: ${port}`)
 })
 
 
