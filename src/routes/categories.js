@@ -7,10 +7,9 @@ const methods = require('../methods')
 const categoriesController = require('../controllers/categories')
 
 Route
-    .get('/categories', categoriesController.getCategories)
-    .post('/categories', methods.ensureToken, categoriesController.addCategory)
-    .put('/categories/:id', methods.ensureToken, categoriesController.editCategory)
-    .delete('/categories/:id', methods.ensureToken, categoriesController.deleteCategory)
-
+  .get('/categories', categoriesController.getCategories)
+  .post('/categories', methods.ensureToken, categoriesController.addCategory)
+  .put('/categories/:id', methods.ensureToken, categoriesController.editCategory)
+  .delete('/categories/:id', methods.ensureToken, categoriesController.deleteCategory)
 
 module.exports = Route

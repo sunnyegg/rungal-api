@@ -13,7 +13,7 @@ app.use(fileUpload())
 
 // parsing input
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // cors
 app.use(cors())
@@ -22,13 +22,12 @@ app.use(cors())
 app.use(logger('dev'))
 
 // port
-port = process.env.SERVER_PORT || 3000
+const port = process.env.SERVER_PORT || 3000
 
 // app listening to
-app.listen(port, function(){
-    console.log(`Server listening on: ${port}`)
+app.listen(port, function () {
+  console.log(`Server listening on: ${port}`)
 })
-
 
 // import all routes
 const routerNav = require('./src/index')
@@ -36,5 +35,5 @@ app.use('/', routerNav)
 
 // determines all other routes
 app.get('*', (req, res) => {
-    res.send('The page you are looking for is not found.')
+  res.send('The page you are looking for is not found.')
 })

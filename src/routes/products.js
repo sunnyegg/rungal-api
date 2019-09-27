@@ -7,11 +7,11 @@ const methods = require('../methods')
 const productsController = require('../controllers/products')
 
 Route
-    .get('/products', productsController.getProducts)
-    .post('/products', methods.ensureToken, productsController.addProduct)
-    .patch('/products/order/:id', methods.ensureToken, productsController.addQuantityProduct)
-    .patch('/products/reduce/:id', methods.ensureToken, productsController.reduceQuantityProduct)
-    .put('/products/:id', methods.ensureToken, productsController.editProduct)
-    .delete('/products/:id', methods.ensureToken, productsController.deleteProduct)
+  .get('/products', productsController.getProducts)
+  .post('/products', methods.ensureToken, productsController.addProduct)
+  .patch('/products/order/:id', methods.ensureToken, productsController.addQuantityProduct)
+  .patch('/products/reduce/:id', methods.ensureToken, productsController.reduceQuantityProduct)
+  .put('/products/:id', methods.ensureToken, productsController.editProduct)
+  .delete('/products/:id', methods.ensureToken, productsController.deleteProduct)
 
 module.exports = Route
