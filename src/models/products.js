@@ -60,7 +60,7 @@ module.exports = {
       conn.query('SELECT quantity FROM product WHERE ?', id,
         (err, result) => {
           if (result.length > 0) {
-            const quantity = parseInt(result[0].quantity) - qty
+            const quantity = parseInt(result[0].quantity,10) - parseInt(qty,10)
             if (quantity > 0) {
               conn.query('UPDATE product SET quantity = ? WHERE ?', [quantity, id],
                 (err) => {
@@ -71,10 +71,7 @@ module.exports = {
                   }
                 })
             } else {
-              reject({
-                message: 'Quantity too much! Result cannot go below 0!',
-                result: quantity
-              })
+              reject(new Error(err))
             }
           } else {
             reject(new Error(err))

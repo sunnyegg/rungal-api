@@ -87,7 +87,6 @@ module.exports = {
     const id = req.params
     const qty = req.body.quantity
     const quantity = qty
-    const date_updated = new Date()
 
     productModel.addQuantityProduct(quantity, id)
       .then(result => {
@@ -95,7 +94,7 @@ module.exports = {
           status: 200,
           message: 'Quantity added successfully!',
           quantity,
-          date_updated
+          date_updated: new Date()
         })
       })
       .catch(err => {
@@ -110,7 +109,6 @@ module.exports = {
   reduceQuantityProduct: (req, res) => {
     const id = req.params
     const qty = req.body.quantity
-    const date_updated = new Date()
 
     productModel.reduceQuantityProduct(qty, id)
       .then(result => {
@@ -118,14 +116,14 @@ module.exports = {
           status: 200,
           message: 'Quantity reduced successfully!',
           qty,
-          date_updated
+          date_updated: new Date()
         })
       })
       .catch(err => {
-        res.status(500).json({
-          status: 500,
+        res.status(400).json({
+          status: 400,
           message: 'Failed to reduce quantity!',
-          error: 'ID not found!'
+          error: 'Quantity too much! Result cannot go below 0!'
         })
       })
   },
@@ -209,7 +207,8 @@ const uploadImage = (req, res) => {
       }
       return result
     }
-  } catch (err) {
+  }
+  catch (err) {
     res.status(500).json({
       status: 500
     })
