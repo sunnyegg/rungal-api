@@ -5,7 +5,7 @@ const Route = express.Router()
 // defines all routes
 const products = require('./routes/products')
 const categories = require('./routes/categories')
-const login = require('./routes/login')
+const login = require('./routes/users')
 
 Route
   .use('/api/v1', products)
