@@ -22,9 +22,7 @@ module.exports = {
   addCategory: (req, res) => {
     const name = req.body
     const data = {
-      name,
-      date_added: new Date(),
-      date_updated: new Date()
+      name
     }
 
     productModel.addCategory(data)
@@ -46,10 +44,7 @@ module.exports = {
   editCategory: (req, res) => {
     const id = req.params
     const name = req.body
-    const data = {
-      name,
-      date_updated: new Date()
-    }
+    const data = { name }
     const dataID = id
 
     productModel.editCategory(data, dataID)
