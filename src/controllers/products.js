@@ -2,9 +2,9 @@
 const productModel = require('../models/products')
 
 module.exports = {
-  getProducts: (req, res) => {
-    const search = req.query.name
-    const searchParam = (!req.query.name) ? '%%' : `%${search}%`
+  getProducts: async (req, res) => {
+    const search = req.query.search
+    const searchParam = (!req.query.search) ? '%%' : `%${search}%`
 
     const sort = req.query.sort
     let sortParam
@@ -27,10 +27,10 @@ module.exports = {
     // const limit = lim || "0,20"
     const page = parseInt(req.query.page, 10) || 1
     const off = ((page - 1) * 5)
-    const lim = (!req.query.page) ? 20 : 5
-
+    const lim = (req.query.page) ? 5 : 20
     const limit = { a: searchParam, b: sortParam, c: off, d: lim }
 
+    const countData = await productModel.countData()
     productModel.getProducts(limit)
       .then(result => {
         res.json({
@@ -38,6 +38,8 @@ module.exports = {
           message: 'Get data successfully!',
           sort: sortParam,
           search: searchParam.replace(/%/g, ''),
+          total_data: countData[0].count,
+          total_page: Math.ceil(parseInt(countData[0].count, 10) / lim),
           data: result
         })
       })
@@ -85,7 +87,6 @@ module.exports = {
     const id = req.params
     const qty = req.body.quantity
     const quantity = qty
-
     const date_updated = new Date()
 
     productModel.addQuantityProduct(quantity, id)
@@ -124,7 +125,7 @@ module.exports = {
         res.status(500).json({
           status: 500,
           message: 'Failed to reduce quantity!',
-          error: err
+          error: 'ID not found!'
         })
       })
   },
