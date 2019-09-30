@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 27, 2019 at 06:53 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.1.31
+-- Host: localhost:3306
+-- Generation Time: Sep 30, 2019 at 05:49 PM
+-- Server version: 5.7.27-0ubuntu0.18.04.1
+-- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -100,8 +100,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `user`, `password`) VALUES
-(1, 'adilaw', '12345'),
-(2, 'adilaw12', '12345');
+(1, 'test123', '$2a$10$xf6wJjNXkJOjMRwxMY8HauIXoPquE.GKCflVFGBSsXZS7PZadNVlS');
 
 --
 -- Indexes for dumped tables
@@ -147,7 +146,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
