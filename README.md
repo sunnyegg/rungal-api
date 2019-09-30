@@ -59,6 +59,7 @@ $ npm start
 ---
 ## Other Dependencies
 
+- [Bcrypt.js](https://www.npmjs.com/package/bcryptjs)
 - [Body Parser](https://www.npmjs.com/package/body-parser)
 - [Cors](https://www.npmjs.com/package/cors)
 - [Dotenv](https://www.npmjs.com/package/dotenv)
@@ -72,11 +73,12 @@ $ npm start
 ## Features
 
 - Get ALL products/categories
+- Search, sort, pagination product
 - Add product/category
 - Edit product/category
 - Delete product/category
 - Increase quantity product
-- Reduce quantitu product
+- Reduce quantity product
 - Register user
 - Login user with JWT
 
