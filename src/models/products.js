@@ -16,16 +16,16 @@ module.exports = {
         })
     })
   },
-  
+
   countData: () => {
     return new Promise((resolve, reject) => {
-      conn.query(`SELECT COUNT(*) count FROM product`, (err, result) => {
-          if (!err) {
-            resolve(result)
-          } else {
-            reject(new Error(err))
-          }
-        })
+      conn.query('SELECT COUNT(*) count FROM product', (err, result) => {
+        if (!err) {
+          resolve(result)
+        } else {
+          reject(new Error(err))
+        }
+      })
     })
   },
 
@@ -60,7 +60,7 @@ module.exports = {
       conn.query('SELECT quantity FROM product WHERE ?', id,
         (err, result) => {
           if (result.length > 0) {
-            const quantity = parseInt(result[0].quantity,10) - parseInt(qty,10)
+            const quantity = parseInt(result[0].quantity, 10) - parseInt(qty, 10)
             if (quantity > 0) {
               conn.query('UPDATE product SET quantity = ? WHERE ?', [quantity, id],
                 (err) => {

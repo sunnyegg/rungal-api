@@ -17,20 +17,20 @@ module.exports = {
         regist.password = hash
 
         userModel.registerUser(regist)
-        .then(result => {
-          res.json({
-            status: 200,
-            message: 'User is registered successfully!',
-            user: regist.user
+          .then(result => {
+            res.json({
+              status: 200,
+              message: 'User is registered successfully!',
+              user: regist.user
+            })
           })
-        })
-        .catch(err => {
-          console.log(err)
-          res.status(500).json({
-            status: 500,
-            message: 'Register failed.'
+          .catch(err => {
+            console.log(err)
+            res.status(500).json({
+              status: 500,
+              message: 'Register failed.'
+            })
           })
-        })
       })
     })
   },
@@ -42,35 +42,35 @@ module.exports = {
     const data = { user, password }
 
     userModel.loginUser(data)
-    .then(resultQuery => {
-      if(resultQuery > 0) {
-        console.log(resultQuery)
-        return res.status(404).json({
-          status: 404,
-          message: 'User not found!'
-        })
-      }
-      const passwordCheck = bcrypt.compareSync(data.password, resultQuery[0].password)
-      if (!passwordCheck) {
-        return res.status(400).json({
-          status: 400,
-          message: 'User or Password is incorrect'
-        })
-      }
-
-      const token = jwt.sign({ username: data.user }, process.env.SECRET_KEY, 
-        (err, token) => {
-          res.send({
-            ok: true,
-            message: 'Login successful!',
-            user: data.user,
-            token: token
+      .then(resultQuery => {
+        if (resultQuery > 0) {
+          console.log(resultQuery)
+          return res.status(404).json({
+            status: 404,
+            message: 'User not found!'
           })
         }
-      )
-    })
-    .catch(err => {
-      console.log(err)
-    })
+        const passwordCheck = bcrypt.compareSync(data.password, resultQuery[0].password)
+        if (!passwordCheck) {
+          return res.status(400).json({
+            status: 400,
+            message: 'User or Password is incorrect'
+          })
+        }
+
+        const token = jwt.sign({ username: data.user }, process.env.SECRET_KEY,
+          (err, token) => {
+            res.send({
+              ok: true,
+              message: 'Login successful!',
+              user: data.user,
+              token: token
+            })
+          }
+        )
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 }

@@ -207,8 +207,7 @@ const uploadImage = (req, res) => {
       }
       return result
     }
-  }
-  catch (err) {
+  } catch (err) {
     res.status(500).json({
       status: 500
     })
