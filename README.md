@@ -20,7 +20,7 @@
 ---
 ## Introduction
 
-Do you hungry? But too lazy to leave your bed and buy food? Rungal can help you order what you want to eat and deliver right to your front door!
+Are you hungry? But too lazy to leave your bed and buy food? Rungal can help you order what you want to eat and deliver right to your front door!
 
 Rungal is a point of sales application of restaurant. The main use of this application is to take order from customer easier and faster. 
 
