@@ -16,6 +16,18 @@ module.exports = {
         })
     })
   },
+  
+  countData: () => {
+    return new Promise((resolve, reject) => {
+      conn.query(`SELECT COUNT(*) count FROM product`, (err, result) => {
+          if (!err) {
+            resolve(result)
+          } else {
+            reject(new Error(err))
+          }
+        })
+    })
+  },
 
   addProduct: (data) => {
     return new Promise((resolve, reject) => {
@@ -51,15 +63,18 @@ module.exports = {
             const quantity = parseInt(result[0].quantity) - qty
             if (quantity > 0) {
               conn.query('UPDATE product SET quantity = ? WHERE ?', [quantity, id],
-                (err, update) => {
+                (err) => {
                   if (!err) {
                     resolve(result)
                   } else {
-                    reject(err)
+                    reject(new Error(err))
                   }
                 })
             } else {
-              reject('Quantity too much!')
+              reject({
+                message: 'Quantity too much! Result cannot go below 0!',
+                result: quantity
+              })
             }
           } else {
             reject(new Error(err))
