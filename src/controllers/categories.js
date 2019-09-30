@@ -21,16 +21,13 @@ module.exports = {
   },
   addCategory: (req, res) => {
     const name = req.body
-    const data = {
-      name
-    }
 
-    productModel.addCategory(data)
+    productModel.addCategory(name)
       .then(result => {
         res.json({
           status: 200,
           message: 'Data added successfully!',
-          data
+          name
         })
       })
       .catch(err => {
@@ -44,15 +41,13 @@ module.exports = {
   editCategory: (req, res) => {
     const id = req.params
     const name = req.body
-    const data = { name }
-    const dataID = id
 
-    productModel.editCategory(data, dataID)
+    productModel.editCategory(name, id)
       .then(result => {
         res.json({
           status: 200,
           message: 'Data edited successfully!',
-          data
+          name
         })
       })
       .catch(err => {
@@ -65,9 +60,8 @@ module.exports = {
   },
   deleteCategory: (req, res) => {
     const id = req.params
-    const dataID = id
 
-    productModel.deleteCategory(dataID)
+    productModel.deleteCategory(id)
       .then(result => {
         res.json({
           status: 200,
