@@ -15,9 +15,12 @@ module.exports = {
   },
   loginUser: (data) => {
     return new Promise((resolve, reject) => {
-      conn.query('SELECT * FROM user WHERE ?', data, (err, result) => {
-        if (!err) resolve(result)
-        else reject(err)
+      conn.query('SELECT * FROM user WHERE user = ?', data.user, (err, result) => {
+        if (!err) {
+          resolve(result)
+        } else {
+          reject(new Error(err))
+        }
       })
     })
   }
