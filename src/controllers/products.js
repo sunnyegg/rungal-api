@@ -28,7 +28,9 @@ module.exports = {
     const page = parseInt(req.query.page, 10) || 1
     const off = ((page - 1) * 5)
     const lim = (req.query.page) ? 5 : 20
-    const limit = { a: searchParam, b: sortParam, c: off, d: lim }
+    const ord = req.query.order || 'asc'
+
+    const limit = { a: searchParam, b: sortParam, c: off, d: lim, e:ord }
 
     const countData = await productModel.countData()
     productModel.getProducts(limit)
@@ -40,6 +42,7 @@ module.exports = {
           search: searchParam.replace(/%/g, ''),
           total_data: countData[0].count,
           total_page: Math.ceil(parseInt(countData[0].count, 10) / lim),
+          order: ord,
           data: result
         })
       })
@@ -186,11 +189,11 @@ const uploadImage = (req, res) => {
         message: 'No file uploaded.'
       }
     } else {
-      const allowedExt = ['jpg', 'png']
+      const allowedExt = ['jpg', 'png','jpeg']
       const path = require('path')
 
       const image = req.files.image
-      const imageName = Date.now() + '-' + image.name
+      const imageName = 'rungal-img' + '-' + Date.now() + image.name
 
       const type = path.extname(imageName).substr(1).toLowerCase()
 

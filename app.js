@@ -10,6 +10,7 @@ const app = express() // use the express
 
 // enable fileupload
 app.use(fileUpload())
+app.use(express.static('./src/assets/img/'))
 
 // parsing input
 app.use(bodyParser.json())
