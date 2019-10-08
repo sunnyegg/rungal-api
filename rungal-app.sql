@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 30, 2019 at 06:55 PM
+-- Generation Time: Oct 08, 2019 at 09:27 AM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
@@ -64,27 +64,22 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `description`, `image`, `category`, `price`, `quantity`, `date_added`, `date_updated`) VALUES
-(1, 'Tempe', 'Tempe is a food made from a fermented soybean seeds.', '1569843452903-Screenshot from 2019-09-30 16-43-33.png', 1, 1000, 600, '2019-09-24 00:00:00', '2019-09-30 18:37:33'),
-(2, 'Rice', 'White Rice is the main dish to every menu in Indonesia', '1569547430558-adila.jpg', 1, 3000, 180, '2019-09-24 00:00:00', '2019-09-27 00:00:00'),
-(3, 'Egg', '', '', 1, 3000, 50, '2019-09-24 00:00:00', '2019-09-24 00:00:00'),
-(4, 'Rendang', '', '', 1, 8000, 20, '2019-09-24 00:00:00', '2019-09-24 00:00:00'),
-(5, 'Meatball', '', '', 1, 5000, 50, '2019-09-24 00:00:00', '2019-09-24 00:00:00'),
-(6, 'Satai', '', '', 1, 5000, 15, '2019-09-24 00:00:00', '2019-09-24 00:00:00'),
-(7, 'Noodle', '', '', 1, 4000, 100, '2019-09-24 00:00:00', '2019-09-24 00:00:00'),
-(8, 'Iced Tea', '', '', 2, 5000, 100, '2019-09-24 00:00:00', '2019-09-24 00:00:00'),
-(9, 'Iced Tea Lemon', '', '', 2, 5000, 100, '2019-09-24 00:00:00', '2019-09-24 00:00:00'),
-(10, 'Water', '', '', 2, 2000, 100, '2019-09-24 00:00:00', '2019-09-24 00:00:00'),
-(11, 'Iced Water', '', '', 2, 3000, 100, '2019-09-24 00:00:00', '2019-09-24 00:00:00'),
-(12, 'Coffee', '', '', 2, 3000, 100, '2019-09-24 00:00:00', '2019-09-24 00:00:00'),
-(13, 'Iced Coffee', '', '', 2, 6000, 100, '2019-09-24 00:00:00', '2019-09-24 00:00:00'),
-(14, 'Bottled Water', '', '', 2, 3000, 100, '2019-09-25 00:00:00', '2019-09-25 00:00:00'),
-(15, 'Nasi Pecel', '', '', 1, 5000, 50, '2019-09-26 00:00:00', '2019-09-26 00:00:00'),
-(16, 'Nasi Uduk', '', '1569597321944-adila.jpg', 1, 7000, 40, '2019-09-27 00:00:00', '2019-09-27 00:00:00'),
-(17, 'Fried Rice', '', '1569597600282-adila.jpg', 1, 10000, 0, '2019-09-27 00:00:00', '2019-09-27 00:00:00'),
-(18, 'Lemon Tea', '', '1569597676237-adila.jpg', 2, 4000, 0, '2019-09-27 00:00:00', '2019-09-27 00:00:00'),
-(19, 'euy', 'euy', NULL, 1, 5000, NULL, '2019-09-30 18:34:57', '2019-09-30 18:34:57'),
-(20, 'euy11', 'euy11', '1569844176136-Screenshot from 2019-09-30 16-43-33.png', 1, 7000, NULL, '2019-09-30 18:49:36', '2019-09-30 18:49:36'),
-(21, 'euy113', 'euy113', '1569844421794-Screenshot from 2019-09-30 16-43-33.png', 1, 7000, NULL, '2019-09-30 18:53:42', '2019-09-30 18:53:42');
+(1, 'Tempe', 'Tempe is a food made from a fermented soybean seeds.', '1570020744277-tempe.jpg', 1, 1000, 600, '2019-09-24 00:00:00', '2019-10-02 19:52:24'),
+(2, 'Rice', '', 'rungal-img-1570023982201rice.jpg', 1, 3000, 180, '2019-09-24 00:00:00', '2019-10-02 20:46:22'),
+(3, 'Egg', '', 'rungal-img-1570024250481egg.jpg', 1, 4000, 50, '2019-09-24 00:00:00', '2019-10-02 20:50:50'),
+(4, 'Rendang', '', 'rungal-img-1570024966020rendang.jpg', 1, 10000, 20, '2019-09-24 00:00:00', '2019-10-02 21:02:46'),
+(5, 'Meatball', '', 'rungal-img-1570025484335bakso.jpeg', 1, 7000, 50, '2019-09-24 00:00:00', '2019-10-02 21:11:24'),
+(6, 'Satai', '', 'rungal-img-1570025572666satai.jpeg', 1, 5000, 15, '2019-09-24 00:00:00', '2019-10-02 21:12:53'),
+(7, 'Ramen', '', 'rungal-img-1570025965277ramen.jpg', 1, 10000, 100, '2019-09-24 00:00:00', '2019-10-02 21:19:25'),
+(8, 'Iced Tea', '', 'rungal-img-1570026573870icedtea.jpg', 2, 5000, 100, '2019-09-24 00:00:00', '2019-10-02 21:29:34'),
+(9, 'Cendol', '', 'rungal-img-1570026680790cendol.jpg', 2, 6000, 100, '2019-09-24 00:00:00', '2019-10-02 21:31:21'),
+(10, 'Water', '', 'rungal-img-1570026991944water.jpg', 2, 2000, 100, '2019-09-24 00:00:00', '2019-10-02 21:36:32'),
+(11, 'Iced Water', '', 'rungal-img-1570028189565water.jpg', 2, 3000, 100, '2019-09-24 00:00:00', '2019-10-02 21:56:30'),
+(12, 'Coffee', '', 'rungal-img-1570028385551coffee.jpg', 2, 6000, 100, '2019-09-24 00:00:00', '2019-10-02 21:59:46'),
+(13, 'Iced Coffee', '', 'rungal-img-1570028465496iced coffee.jpg', 2, 8000, 100, '2019-09-24 00:00:00', '2019-10-02 22:01:05'),
+(14, 'Aqua', '', 'rungal-img-1570028724650aqua.jpg', 2, 4000, 100, '2019-09-25 00:00:00', '2019-10-02 22:05:25'),
+(15, 'Nasi Pecel', '', 'rungal-img-1570029089712nasi pecel.jpg', 1, 6000, 50, '2019-09-26 00:00:00', '2019-10-02 22:11:30'),
+(16, 'Nasi Kuning', '', 'rungal-img-1570461416579nasi kuning.jpg', 1, 7000, 20, '2019-10-07 22:16:57', '2019-10-07 22:16:57');
 
 -- --------------------------------------------------------
 
@@ -103,7 +98,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `user`, `password`) VALUES
-(1, 'test123', '$2a$10$xf6wJjNXkJOjMRwxMY8HauIXoPquE.GKCflVFGBSsXZS7PZadNVlS');
+(1, 'test123', '$2a$10$xf6wJjNXkJOjMRwxMY8HauIXoPquE.GKCflVFGBSsXZS7PZadNVlS'),
+(2, 'yeay', '$2a$10$1JIGyvei8WK9f6gsrpmHpOUf3v1V1cGe4N1d.cfFZFmDkvHkar3Du');
 
 --
 -- Indexes for dumped tables
@@ -143,13 +139,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
