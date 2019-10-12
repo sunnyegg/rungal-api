@@ -1,30 +1,31 @@
 ![](https://img.shields.io/badge/Code%20Style-Standard-yellow.svg)
 ![](https://img.shields.io/badge/Dependencies-Express-green.svg)
-![](https://img.shields.io/badge/Storage-Localhost-orange.svg)
+![](https://img.shields.io/badge/Storage-Amazon%20Web%20Service-informational.svg)
 
 # Express Rungal
 
 ---
+
 ## Table of Contents
 
 - [Introduction](#introduction)
 - [Prerequisite](#prerequisite)
 - [Installation](#installation)
-    - [Clone](#clone)
-    - [Environment](#environment)
-    - [Start](#start)
+  - [Clone](#clone)
+  - [Environment](#environment)
+  - [Start](#start)
 - [Dependencies](#dependencies)
 - [Features](#features)
 - [Routes](#api-routes)
 
 ---
+
 ## Introduction
 
-Are you hungry? But too lazy to leave your bed and buy food? Rungal can help you order what you want to eat and deliver right to your front door!
-
-Rungal is a point of sales application of restaurant. The main use of this application is to take order from customer easier and faster. 
+Rungal is a point of sales application of restaurant. The main use of this application is to take order from customer easier and faster.
 
 ---
+
 ## Prerequisite
 
 - [Node.js](https://nodejs.org/en/)
@@ -34,9 +35,11 @@ Rungal is a point of sales application of restaurant. The main use of this appli
 - [Postman](https://www.getpostman.com/)
 
 ---
+
 ## Installation
 
 ### Clone
+
 ```bash
 $ git clone https://github.com/sunnyegg/rungal-api.git
 $ cd rungal-api
@@ -44,19 +47,24 @@ $ npm install
 ```
 
 ---
+
 ### Create Environment Variables
+
 ```bash
 $ mv .env.example .env
 $ [your text editor] .env
 ```
 
 ---
+
 ### Start
+
 ```bash
 $ npm start
 ```
 
 ---
+
 ## Other Dependencies
 
 - [Bcrypt.js](https://www.npmjs.com/package/bcryptjs)
@@ -70,9 +78,11 @@ $ npm start
 - [Path](https://www.npmjs.com/package/path)
 
 ---
+
 ## Features
 
 - Get ALL products/categories
+- Get History Order and Revenue
 - Search, sort, pagination product
 - Add product/category
 - Edit product/category
@@ -83,6 +93,7 @@ $ npm start
 - Login user with JWT
 
 ---
+
 ## API Routes
 
 ### Product
@@ -96,7 +107,7 @@ $ npm start
 
 ### Categories
 
-- **/categories** GET method: Get all categories 
+- **/categories** GET method: Get all categories
 - **/categories** POST method: Add category (login required)
 - **/categories/:id** PUT method: Edit category (login required)
 - **/categories/:id** DELETE method: Delete category (login required)
@@ -105,3 +116,12 @@ $ npm start
 
 - **/register** PUT method: Register user
 - **/login** PUT method: Login user
+
+### History Order and Revenue
+
+- **/history** GET method: Get history order
+- **/history** POST method: Add order (checkout)
+- **/history/daily** GET method: Get daily income
+- **/history/weekly** GET method: Get weekly income
+- **/history/monthly** GET method: Get monthly income
+- **/history/yearly** GET method: Get yearly income
