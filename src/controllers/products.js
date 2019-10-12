@@ -57,6 +57,21 @@ module.exports = {
       });
   },
 
+  getProductsbyID: (req, res) => {
+    const id = req.params.id;
+
+    productModel
+      .getProductsbyID(id)
+      .then(result => {
+        res.json({
+          status: 200,
+          message: "Get data successfully!",
+          data: result
+        });
+      })
+      .catch();
+  },
+
   addProduct: (req, res) => {
     const image = uploadImage(req, res);
     const { name, description, category, price, quantity } = req.body;
