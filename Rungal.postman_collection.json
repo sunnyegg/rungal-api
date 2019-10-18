@@ -18,7 +18,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:3333/api/v1/products",
+							"raw": "100.24.15.0:3000/api/v1/products",
 							"host": [
 								"localhost"
 							],
@@ -42,7 +42,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:3333/api/v1/products?",
+							"raw": "100.24.15.0:3000/api/v1/products?",
 							"host": [
 								"localhost"
 							],
@@ -125,7 +125,7 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3333/api/v1/products",
+							"raw": "100.24.15.0:3000/api/v1/products",
 							"host": [
 								"localhost"
 							],
@@ -185,7 +185,7 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3333/api/v1/products/1",
+							"raw": "100.24.15.0:3000/api/v1/products/1",
 							"host": [
 								"localhost"
 							],
@@ -216,7 +216,7 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3333/api/v1/products/order/:id",
+							"raw": "100.24.15.0:3000/api/v1/products/order/:id",
 							"host": [
 								"localhost"
 							],
@@ -271,7 +271,7 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3333/api/v1/products/reduce/2",
+							"raw": "100.24.15.0:3000/api/v1/products/reduce/2",
 							"host": [
 								"localhost"
 							],
@@ -307,7 +307,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:3333/api/v1/products/21",
+							"raw": "100.24.15.0:3000/api/v1/products/21",
 							"host": [
 								"localhost"
 							],
@@ -337,7 +337,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:3333/api/v1/categories",
+							"raw": "100.24.15.0:3000/api/v1/categories",
 							"host": [
 								"localhost"
 							],
@@ -384,7 +384,7 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3333/api/v1/categories",
+							"raw": "100.24.15.0:3000/api/v1/categories",
 							"host": [
 								"localhost"
 							],
@@ -431,7 +431,7 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3333/api/v1/categories/5",
+							"raw": "100.24.15.0:3000/api/v1/categories/5",
 							"host": [
 								"localhost"
 							],
@@ -470,7 +470,7 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "localhost:3333/api/v1/categories/5",
+							"raw": "100.24.15.0:3000/api/v1/categories/5",
 							"host": [
 								"localhost"
 							],
@@ -508,7 +508,7 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:3333/api/v1/login",
+					"raw": "100.24.15.0:3000/api/v1/login",
 					"host": [
 						"localhost"
 					],
@@ -543,7 +543,7 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:3333/api/v1/register",
+					"raw": "100.24.15.0:3000/api/v1/register",
 					"host": [
 						"localhost"
 					],

@@ -28,7 +28,7 @@ module.exports = {
     const page = parseInt(req.query.page, 10) || 1;
     const off = (page - 1) * 9;
     const lim = req.query.page ? 9 : 20;
-    const ord = req.query.order || "asc";
+    const ord = req.query.order || "desc";
 
     const limit = { a: searchParam, b: sortParam, c: off, d: lim, e: ord };
 

@@ -6,31 +6,28 @@ const methods = require("../methods");
 // import controller
 const productsController = require("../controllers/products");
 
-Route.get("/products", productsController.getProducts)
-  .get("/products/:id", productsController.getProductsbyID)
-  .post(
-    "/products",
-    // methods.ensureToken,
-    productsController.addProduct
-  )
+Route
+  .get("/products", methods.ensureToken, productsController.getProducts)
+  .get("/products/:id", methods.ensureToken, productsController.getProductsbyID)
+  .post("/products", methods.ensureToken, productsController.addProduct)
   .patch(
     "/products/order/:id",
-    // methods.ensureToken,
+    methods.ensureToken,
     productsController.addQuantityProduct
   )
   .patch(
     "/products/reduce/:id",
-    // methods.ensureToken,
+    methods.ensureToken,
     productsController.reduceQuantityProduct
   )
   .put(
     "/products/:id",
-    // methods.ensureToken,
+    methods.ensureToken,
     productsController.editProduct
   )
   .delete(
     "/products/:id",
-    // methods.ensureToken,
+    methods.ensureToken,
     productsController.deleteProduct
   );
 
