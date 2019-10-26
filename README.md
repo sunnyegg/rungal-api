@@ -4,6 +4,12 @@
 
 # Express Rungal
 
+<p align="center">
+  <a href="https://nodejs.org/">
+    <img title="Restful API" src="https://cdn-images-1.medium.com/max/871/1*d2zLEjERsrs1Rzk_95QU9A.png">
+  </a>
+</p>
+
 ---
 
 ## Table of Contents
@@ -28,11 +34,12 @@ Rungal is a point of sales application of restaurant. The main use of this appli
 
 ## Prerequisite
 
-- [Node.js](https://nodejs.org/en/)
-- [Express](https://www.npmjs.com/package/express)
-- [MySQL](https://www.npmjs.com/package/mysql)
-- [JWT](https://www.npmjs.com/package/jsonwebtoken)
-- [Postman](https://www.getpostman.com/)
+| **Main Dependencies** | **Description** | **Link** |
+| --- | --- | --- |
+| **Node.js** | A Javascript runtime. | [Go](https://nodejs.org/en/)
+| **Express.js** | A Javascript framework for building web application/APIs. | [Go](https://expressjs.com/)
+| **MySQL** | A relational database management system (RDMS). | [Go](https://www.npmjs.com/package/mysql)
+| **JWT** | A package for generating token. | [Go](https://www.npmjs.com/package/jsonwebtoken)
 
 ---
 
