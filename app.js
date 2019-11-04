@@ -26,7 +26,7 @@ app.use(logger('dev'))
 const port = process.env.SERVER_PORT || 3000
 
 // app listening to
-app.listen(port, function () {
+app.listen(port, () => {
   console.log(`Server listening on: ${port}`)
 })
 
