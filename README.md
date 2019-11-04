@@ -12,6 +12,13 @@
 
 ---
 
+## Projects that uses this API:
+
+1. Rungal App (Web) | [Link](https://github.com/sunnyegg/react-rungalapp-bootstrap)
+2. Rungal App (Mobile) | [Link](https://github.com/sunnyegg/rn-rungal)
+
+---
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -34,12 +41,12 @@ Rungal is a point of sales application of restaurant. The main use of this appli
 
 ## Prerequisite
 
-| **Main Dependencies** | **Description** | **Link** |
-| --- | --- | --- |
-| **Node.js** | A Javascript runtime. | [Go](https://nodejs.org/en/)
-| **Express.js** | A Javascript framework for building web application/APIs. | [Go](https://expressjs.com/)
-| **MySQL** | A relational database management system (RDMS). | [Go](https://www.npmjs.com/package/mysql)
-| **JWT** | A package for generating token. | [Go](https://www.npmjs.com/package/jsonwebtoken)
+| **Main Dependencies** | **Description**                                           | **Link**                                         |
+| --------------------- | --------------------------------------------------------- | ------------------------------------------------ |
+| **Node.js**           | A Javascript runtime.                                     | [Go](https://nodejs.org/en/)                     |
+| **Express.js**        | A Javascript framework for building web application/APIs. | [Go](https://expressjs.com/)                     |
+| **MySQL**             | A relational database management system (RDMS).           | [Go](https://www.npmjs.com/package/mysql)        |
+| **JWT**               | A package for generating token.                           | [Go](https://www.npmjs.com/package/jsonwebtoken) |
 
 ---
 
@@ -62,6 +69,19 @@ $ mv .env.example .env
 $ [your text editor] .env
 ```
 
+Example:
+
+```
+SERVER_PORT = 3300 // Port where your server is listen to
+
+DB_HOST = localhost // Host of your MySQL DB
+DB_USER = root // User of your MySQL DB
+DB_PASSWORD = root // Password of your user in MySQL DB
+DB_DATABASE = database // Name of your database in MySQL DB
+
+SECRET_KEY = thisissecretkey // Secret key for JWT
+```
+
 ---
 
 ### Start
@@ -74,15 +94,12 @@ $ npm start
 
 ## Other Dependencies
 
-- [Bcrypt.js](https://www.npmjs.com/package/bcryptjs)
-- [Body Parser](https://www.npmjs.com/package/body-parser)
-- [Cors](https://www.npmjs.com/package/cors)
-- [Dotenv](https://www.npmjs.com/package/dotenv)
-- [Express Fileupload](https://www.npmjs.com/package/express-fileupload)
-- [Fs](https://www.npmjs.com/package/fs)
-- [Morgan](https://www.npmjs.com/package/morgan)
-- [Nodemon](https://www.npmjs.com/package/nodemon)
-- [Path](https://www.npmjs.com/package/path)
+| **Other Dependencies** | **Description**                                | **Link**                                               |
+| ---------------------- | ---------------------------------------------- | ------------------------------------------------------ |
+| **Bcrypt.js**          | To encrypt credentials (eg. password).         | [Go](https://www.npmjs.com/package/bcryptjs)           |
+| **CORS**               | To allow resource sharing from another domain. | [Go](https://www.npmjs.com/package/cors)               |
+| **Dotenv**             | To create environment variables.               | [Go](https://www.npmjs.com/package/dotenv)             |
+| **Express Fileupload** | To upload files.                               | [Go](https://www.npmjs.com/package/express-fileupload) |
 
 ---
 
@@ -103,32 +120,23 @@ $ npm start
 
 ## API Routes
 
-### Product
-
-- **/products** GET method: Get all products
-- **/products** POST method: Add product (login required)
-- **/products/:id** PUT method: Edit product (login required)
-- **/products/:id** DELETE method: Delete product (login required)
-- **/products/order/:id** PATCH method: Increase quantity product (login required)
-- **/products/reduce/:id** PATCH method: Reduce quantity product (login required)
-
-### Categories
-
-- **/categories** GET method: Get all categories
-- **/categories** POST method: Add category (login required)
-- **/categories/:id** PUT method: Edit category (login required)
-- **/categories/:id** DELETE method: Delete category (login required)
-
-### Users
-
-- **/register** PUT method: Register user
-- **/login** PUT method: Login user
-
-### History Order and Revenue
-
-- **/history** GET method: Get history order
-- **/history** POST method: Add order (checkout)
-- **/history/daily** GET method: Get daily income
-- **/history/weekly** GET method: Get weekly income
-- **/history/monthly** GET method: Get monthly income
-- **/history/yearly** GET method: Get yearly income
+| Feature                   | Method | Route                | Desc                                     |
+| ------------------------- | ------ | -------------------- | ---------------------------------------- |
+| Product                   | GET    | /products            | Get list of all products                 |
+|                           | POST   | /products            | Add a product                            |
+|                           | PUT    | /products/:id        | Edit a product of `:id`                  |
+|                           | DELETE | /products/:id        | Delete a product of `:id`                |
+|                           | PATCH  | /products/order/:id  | Increase the quantity of a product `:id` |
+|                           | PATCH  | /products/reduce/:id | Reduce the quantity of a product `:id`   |
+| Category                  | GET    | /categories          | Get list of all categories               |
+|                           | POST   | /categories          | Add a category                           |
+|                           | PUT    | /categories/:id      | Edit a product of `:id`                  |
+|                           | DELETE | /categories/:id      | Delete a product of `:id`                |
+| Users                     | POST   | /register            | Register a new user                      |
+|                           | POST   | /login               | Login                                    |
+| History Order and Revenue | GET    | /history             | Get list of all history orders           |
+|                           | POST   | /history             | Add an order (checkout)                  |
+|                           | GET    | /history/daily       | Get list of all daily income             |
+|                           | GET    | /history/weekly      | Get list of all weekly income            |
+|                           | GET    | /history/monthly     | Get list of all monthly income           |
+|                           | GET    | /history/yearly      | Get list of all yearly income            |
