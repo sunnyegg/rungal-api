@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 12, 2019 at 06:34 PM
+-- Generation Time: Nov 04, 2019 at 09:37 PM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
@@ -38,7 +38,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`) VALUES
-(2, 'beverages'),
+(2, 'Beverages'),
 (1, 'food');
 
 -- --------------------------------------------------------
@@ -107,10 +107,8 @@ INSERT INTO `product` (`id`, `name`, `description`, `image`, `category`, `price`
 (10, 'Water', '', 'rungal-img-1570026991944water.jpg', 2, 2000, 100, '2019-09-24 00:00:00', '2019-10-02 21:36:32'),
 (11, 'Iced Water', '', 'rungal-img-1570028189565water.jpg', 2, 3000, 100, '2019-09-24 00:00:00', '2019-10-02 21:56:30'),
 (12, 'Coffee', '', 'rungal-img-1570028385551coffee.jpg', 2, 6000, 100, '2019-09-24 00:00:00', '2019-10-02 21:59:46'),
-(13, 'Iced Coffee', '', 'rungal-img-1570028465496iced coffee.jpg', 2, 8000, 100, '2019-09-24 00:00:00', '2019-10-02 22:01:05'),
-(14, 'Aqua', '', 'rungal-img-1570629142633aqua.jpg', 1, 4000, 100, '2019-09-25 00:00:00', '2019-10-09 20:52:23'),
-(15, 'Nasi Pecel', '', 'rungal-img-1570029089712nasi pecel.jpg', 1, 6000, 50, '2019-09-26 00:00:00', '2019-10-02 22:11:30'),
-(16, 'Nasi Kuning', '', 'rungal-img-1570461416579nasi kuning.jpg', 1, 7000, 20, '2019-10-07 22:16:57', '2019-10-07 22:16:57');
+(22, 'Ycycyc', 'Xgyx', 'rungal-img-1571394672587IMG_20191017_211516.jpg', 2, 4456, 22, '2019-10-18 17:31:13', '2019-10-18 17:31:13'),
+(23, 'Ajaj', 'Ahajha', 'rungal-img-1571404865897IMG_20191017_211516.jpg', 2, 10000, 100, '2019-10-18 20:21:06', '2019-10-18 20:21:06');
 
 -- --------------------------------------------------------
 
@@ -183,7 +181,7 @@ ALTER TABLE `history`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `user`
